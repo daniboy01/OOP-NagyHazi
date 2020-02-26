@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NagyHázi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NagyHázi_jar</output-path>
+    <root id="archive" name="NagyHázi.jar">
+      <element id="module-output" name="NagyHázi" />
+    </root>
+  </artifact>
+</component>

@@ -27,7 +27,7 @@ public class GameBoard extends JComponent implements KeyListener {
         testBoxX = 300;
         testBoxY = 300;
         tiles = new Tile[ROWS][COLUMNS];
-        hero = new Hero(1,1,10,5);
+        hero = new Hero(1,1);
 
 //        for (int i = 0; i < ROWS; i++) {
 //////            for (int j = 0; j < COLUMNS; j++) {
@@ -70,6 +70,7 @@ public class GameBoard extends JComponent implements KeyListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.pack();
+        frame.addKeyListener(board);
 
     }
 
@@ -85,9 +86,19 @@ public class GameBoard extends JComponent implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            tiles[hero.getX()][hero.getY()] = tiles
+        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+            hero.moveRight();
         }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+            hero.moveLeft();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
+            hero.moveUp();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
+            hero.moveDown();
+        }
+        repaint();
 
     }
 
