@@ -12,13 +12,15 @@ public abstract class Tile extends JComponent {
         this.x = x;
         this.y = y;
     }
-    @Override
+
     public int getX() {
         return x;
     }
-    @Override
     public int getY() {
         return y;
     }
+
     public abstract void paint(Graphics graphics);
+
+    public abstract boolean canStepOn();
 }

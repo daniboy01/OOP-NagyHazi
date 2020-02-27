@@ -1,7 +1,5 @@
 import characters.Hero;
-import tiles.Path;
 import tiles.Tile;
-import tiles.Wall;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,13 +18,14 @@ public class GameBoard extends JComponent implements KeyListener {
         return tiles;
     }
 
-    private static final int ROWS = 10;
-    private static final int COLUMNS = 10;
+    public static final int ROWS = 10;
+    public static final int COLS = 10;
+
 
     public GameBoard() {
         testBoxX = 300;
         testBoxY = 300;
-        tiles = new Tile[ROWS][COLUMNS];
+        tiles = new Tile[COLS][ROWS];
         hero = new Hero(1,1);
 
 //        for (int i = 0; i < ROWS; i++) {
@@ -45,22 +44,19 @@ public class GameBoard extends JComponent implements KeyListener {
 //////        }
         FileReader reader = new FileReader();
         tiles = reader.getTiles("resources/board.txt");
-        setPreferredSize(new Dimension(720, 720));
+        setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
         setVisible(true);
     }
 
     @Override
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        // here you have a 720x720 canvas
-        // you can create and draw an image using the class below e.g.
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
+        for (int i = 0; i < COLS; i++) {
+            for (int j = 0; j < ROWS; j++) {
                 tiles[i][j].paint(graphics);
             }
         }
         hero.paint(graphics);
-
     }
 
     public static void main(String[] args) {
@@ -71,35 +67,39 @@ public class GameBoard extends JComponent implements KeyListener {
         frame.setVisible(true);
         frame.pack();
         frame.addKeyListener(board);
-
     }
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hero.moveRight();
+            if (tiles[hero.getPositionX()+1][hero.getPositionY()].canStepOn()) {
+                hero.moveRight();
+            }
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            hero.moveLeft();
+            if (tiles[hero.getPositionX()-1][hero.getPositionY()].canStepOn()) {
+                hero.moveLeft();
+            }
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-            hero.moveUp();
+            if (tiles[hero.getPositionX()][hero.getPositionY()-1].canStepOn()){
+                hero.moveUp();
+            }
+
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-            hero.moveDown();
+            if (tiles[hero.getPositionX()][hero.getPositionY()+1].canStepOn()){
+                hero.moveDown();
+            }
         }
         repaint();
-
     }
-
 }

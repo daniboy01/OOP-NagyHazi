@@ -64,4 +64,11 @@ public class Hero extends Character {
         move = "up";
     }
 
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
 }

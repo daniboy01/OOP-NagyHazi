@@ -15,4 +15,9 @@ public class Path extends Tile  {
         image.draw(graphics);
     //Cica
     }
+
+    @Override
+    public boolean canStepOn() {
+        return true;
+    }
 }

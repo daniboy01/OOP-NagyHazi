@@ -10,9 +10,13 @@ public class Wall extends Tile {
     }
 
     @Override
-    //Cica
     public void paint(Graphics graphics) {
         PositionedImage image = new PositionedImage(URL,getX() * SIZE, getY() * SIZE);
         image.draw(graphics);
+    }
+
+    @Override
+    public boolean canStepOn() {
+        return false;
     }
 }
