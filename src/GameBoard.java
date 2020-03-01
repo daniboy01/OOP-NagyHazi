@@ -1,4 +1,5 @@
 import characters.Hero;
+import characters.Monster;
 import tiles.Tile;
 
 import javax.swing.*;
@@ -7,41 +8,25 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameBoard extends JComponent implements KeyListener {
-
     int testBoxX;
     int testBoxY;
-
     private Tile[][] tiles;
     private Hero hero;
-
+    private Monster m1;
+    private Monster m2;
     public Tile[][] getTiles() {
         return tiles;
     }
-
     public static final int ROWS = 10;
     public static final int COLS = 10;
-
 
     public GameBoard() {
         testBoxX = 300;
         testBoxY = 300;
         tiles = new Tile[COLS][ROWS];
         hero = new Hero(1,1);
-
-//        for (int i = 0; i < ROWS; i++) {
-//////            for (int j = 0; j < COLUMNS; j++) {
-//////                tiles[i][j] = new Path(i, j);
-//////            }
-//////
-//////            tiles[1][1] = new Wall(1,1);
-//////            tiles[1][2] = new Wall(1,2);
-//////            tiles[1][3] = new Wall(1,3);
-//////            tiles[1][4] = new Wall(1,4);
-//////
-//////            // set the size of your draw board
-//////            setPreferredSize(new Dimension(720, 720));
-//////            setVisible(true);
-//////        }
+        m1 = new Monster(3,5);
+        m2 = new Monster(7,4);
         FileReader reader = new FileReader();
         tiles = reader.getTiles("resources/board.txt");
         setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
@@ -56,7 +41,10 @@ public class GameBoard extends JComponent implements KeyListener {
                 tiles[i][j].paint(graphics);
             }
         }
+        m1.paint(graphics);
+        m2.paint(graphics);
         hero.paint(graphics);
+
     }
 
     public static void main(String[] args) {
@@ -93,13 +81,13 @@ public class GameBoard extends JComponent implements KeyListener {
             if (tiles[hero.getPositionX()][hero.getPositionY()-1].canStepOn()){
                 hero.moveUp();
             }
-
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
             if (tiles[hero.getPositionX()][hero.getPositionY()+1].canStepOn()){
                 hero.moveDown();
             }
         }
+
         repaint();
     }
 }

@@ -9,8 +9,8 @@ public class Hero extends Character {
     private int positionX;
     private int positionY;
     private String move = "default";
-    private static final String URL = "resources/pilászy.PNG";
     private PositionedImage image;
+
 
     public Hero(int positionX, int positionY) {
         this.positionX = positionX;
@@ -21,23 +21,23 @@ public class Hero extends Character {
     public void paint(Graphics graphics) {
         switch (move) {
             case "default":
-                image = new PositionedImage(URL,positionX * Tile.SIZE,positionY * Tile.SIZE);
+                image = new PositionedImage("resources/hero-down.png",positionX * Tile.SIZE,positionY * Tile.SIZE);
                 image.draw(graphics);
                 break;
             case "right":
-                image = new PositionedImage(URL,positionX * Tile.SIZE,positionY * Tile.SIZE);
+                image = new PositionedImage("resources/hero-right.png",positionX * Tile.SIZE,positionY * Tile.SIZE);
                 image.draw(graphics);
                 break;
             case "left":
-                image = new PositionedImage(URL,positionX * Tile.SIZE,positionY * Tile.SIZE);
+                image = new PositionedImage("resources/hero-left.png",positionX * Tile.SIZE,positionY * Tile.SIZE);
                 image.draw(graphics);
                 break;
             case "up":
-                image = new PositionedImage(URL,positionX * Tile.SIZE,positionY * Tile.SIZE);
+                image = new PositionedImage("resources/hero-up.png",positionX * Tile.SIZE,positionY * Tile.SIZE);
                 image.draw(graphics);
                 break;
             case "down":
-                image = new PositionedImage(URL,positionX * Tile.SIZE,positionY * Tile.SIZE);
+                image = new PositionedImage("resources/hero-down.png",positionX * Tile.SIZE,positionY * Tile.SIZE);
                 image.draw(graphics);
                 break;
         }
@@ -71,4 +71,5 @@ public class Hero extends Character {
     public int getPositionY() {
         return positionY;
     }
+
 }
