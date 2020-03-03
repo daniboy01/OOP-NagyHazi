@@ -13,7 +13,7 @@ public class Hero extends Character {
 
 
     public Hero(int positionX, int positionY) {
-        this.setStrikePower(2);
+        this.setStrikePower(100);
         this.setHP(10);
         this.positionX = positionX;
         this.positionY = positionY;

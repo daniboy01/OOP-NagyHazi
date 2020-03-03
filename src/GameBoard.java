@@ -6,29 +6,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class GameBoard extends JComponent implements KeyListener {
     int testBoxX;
     int testBoxY;
     private Tile[][] tiles;
     private Hero hero;
-    private Monster m1;
-    private Monster m2;
     public Tile[][] getTiles() {
         return tiles;
     }
     public static final int ROWS = 10;
-    public static final int COLS = 10;
+    public static final int COLS = 15;
+    private ArrayList<Monster> monsters;
 
     public GameBoard() {
         testBoxX = 300;
         testBoxY = 300;
         tiles = new Tile[COLS][ROWS];
         hero = new Hero(1,1);
-        m1 = new Monster(3,5);
-        m2 = new Monster(7,4);
         FileReader reader = new FileReader();
         tiles = reader.getTiles("resources/board.txt");
+        monsters = reader.getMonsters();
         setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
         setVisible(true);
     }
@@ -41,8 +40,9 @@ public class GameBoard extends JComponent implements KeyListener {
                 tiles[i][j].paint(graphics);
             }
         }
-        m1.paint(graphics);
-        m2.paint(graphics);
+        for (Monster m:monsters) {
+            m.paint(graphics);
+        }
         hero.paint(graphics);
 
     }
@@ -88,7 +88,9 @@ public class GameBoard extends JComponent implements KeyListener {
             }
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
-            hero.attack(m1);
+            for (Monster m : monsters) {
+               hero.attack(m);
+            }
         }
 
         repaint();

@@ -20,4 +20,5 @@ public class Path extends Tile  {
     public boolean canStepOn() {
         return true;
     }
+
 }

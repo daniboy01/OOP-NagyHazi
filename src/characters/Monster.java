@@ -42,6 +42,6 @@ public class Monster extends Character {
     }
 
     public void gotDamage(int damage) {
-        this.setHP(this.getHP() - 1);
+        this.setHP(this.getHP() - damage);
     }
 }
