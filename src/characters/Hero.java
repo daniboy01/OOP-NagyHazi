@@ -41,7 +41,6 @@ public class Hero extends Character {
                 image.draw(graphics);
                 break;
         }
-
     }
 
     public void moveRight(){
