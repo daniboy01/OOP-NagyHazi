@@ -87,6 +87,9 @@ public class GameBoard extends JComponent implements KeyListener {
                 hero.moveDown();
             }
         }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
+            hero.attack(m1);
+        }
 
         repaint();
     }

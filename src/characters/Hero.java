@@ -13,6 +13,8 @@ public class Hero extends Character {
 
 
     public Hero(int positionX, int positionY) {
+        this.setStrikePower(2);
+        this.setHP(10);
         this.positionX = positionX;
         this.positionY = positionY;
     }
@@ -71,4 +73,9 @@ public class Hero extends Character {
         return positionY;
     }
 
+    public void attack(Monster monster) {
+        if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
+            monster.gotDamage(this.getStrikePower());
+        }
+    }
 }
