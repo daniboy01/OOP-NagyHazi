@@ -1,6 +1,7 @@
 import characters.Hero;
 import characters.Monster;
 import items.Item;
+import items.Weapon;
 import tiles.Tile;
 
 import javax.swing.*;
@@ -96,6 +97,9 @@ public class GameBoard extends JComponent implements KeyListener {
         if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
             for (Monster m : monsters) {
                hero.attack(m);
+            }
+            for (Item i : items) {
+                hero.pickUp(i);
             }
         }
 

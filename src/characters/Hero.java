@@ -1,5 +1,7 @@
 package characters;
 
+import items.Item;
+import items.Weapon;
 import tiles.PositionedImage;
 import tiles.Tile;
 
@@ -78,6 +80,14 @@ public class Hero extends Character {
     public void attack(Monster monster) {
         if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
             monster.gotDamage(this.getStrikePower());
+        }
+    }
+
+    public void pickUp(Item weapon) {
+        if (this.getPositionX() == weapon.getX() && this.getPositionY() == weapon.getY()){
+            this.invetory.addItem(weapon);
+            System.out.println("Fegyver felévée");
+            System.out.println(this.invetory.getItems().toString());
         }
     }
 }
