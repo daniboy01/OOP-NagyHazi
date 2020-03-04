@@ -1,5 +1,6 @@
 import characters.Hero;
 import characters.Monster;
+import items.Item;
 import tiles.Tile;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class GameBoard extends JComponent implements KeyListener {
     public static final int ROWS = 10;
     public static final int COLS = 15;
     private ArrayList<Monster> monsters;
+    private ArrayList<Item> items;
 
     public GameBoard() {
         testBoxX = 300;
@@ -28,6 +30,7 @@ public class GameBoard extends JComponent implements KeyListener {
         FileReader reader = new FileReader();
         tiles = reader.getTiles("resources/board.txt");
         monsters = reader.getMonsters();
+        items = reader.getItems();
         setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
         setVisible(true);
     }
@@ -40,8 +43,11 @@ public class GameBoard extends JComponent implements KeyListener {
                 tiles[i][j].paint(graphics);
             }
         }
-        for (Monster m:monsters) {
+        for (Monster m : monsters) {
             m.paint(graphics);
+        }
+        for (Item i : items){
+            i.paint(graphics);
         }
         hero.paint(graphics);
 

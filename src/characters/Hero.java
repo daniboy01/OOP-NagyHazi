@@ -10,6 +10,7 @@ public class Hero extends Character {
     private int positionY;
     private String move = "default";
     private PositionedImage image;
+    private Invetory invetory;
 
 
     public Hero(int positionX, int positionY) {
@@ -17,6 +18,7 @@ public class Hero extends Character {
         this.setHP(10);
         this.positionX = positionX;
         this.positionY = positionY;
+        this.invetory = new Invetory();
     }
 
     @Override
