@@ -44,11 +44,16 @@ public class GameBoard extends JComponent implements KeyListener {
                 tiles[i][j].paint(graphics);
             }
         }
-        for (Monster m : monsters) {
-            m.paint(graphics);
+        if (monsters.size() != 0){
+            for (Monster m : monsters) {
+                m.paint(graphics);
+            }
         }
-        for (Item i : items){
-            i.paint(graphics);
+
+        if (items.size() != 0) {
+            for (Item i : items){
+                i.paint(graphics);
+            }
         }
         hero.paint(graphics);
 
@@ -98,9 +103,14 @@ public class GameBoard extends JComponent implements KeyListener {
             for (Monster m : monsters) {
                hero.attack(m);
             }
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_F){
             for (Item i : items) {
-                hero.pickUp(i);
+                if (hero.pickUp(i)) {
+                    items.remove(i);
+                }
             }
+
         }
 
         repaint();

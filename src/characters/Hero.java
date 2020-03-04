@@ -83,11 +83,13 @@ public class Hero extends Character {
         }
     }
 
-    public void pickUp(Item weapon) {
+    public boolean pickUp(Item weapon) {
         if (this.getPositionX() == weapon.getX() && this.getPositionY() == weapon.getY()){
             this.invetory.addItem(weapon);
-            System.out.println("Fegyver felévée");
+            System.out.println("Fegyver felvéve");
             System.out.println(this.invetory.getItems().toString());
+            return true;
         }
+        return false;
     }
 }
