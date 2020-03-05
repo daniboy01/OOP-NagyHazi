@@ -105,9 +105,9 @@ public class GameBoard extends JComponent implements KeyListener {
             }
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F){
-            for (Item i : items) {
-                if (hero.pickUp(i)) {
-                    items.remove(i);
+            for (int i = 0; i < items.size(); i++) {
+                if (hero.pickUp(items.get(i))){
+                    items.remove(items.get(i));
                 }
             }
 
