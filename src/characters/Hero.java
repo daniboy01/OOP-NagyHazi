@@ -16,7 +16,7 @@ public class Hero extends Character {
 
 
     public Hero(int positionX, int positionY) {
-        this.setStrikePower(100);
+        this.setStrikePower(1);
         this.setHP(10);
         this.positionX = positionX;
         this.positionY = positionY;
@@ -78,8 +78,15 @@ public class Hero extends Character {
     }
 
     public void attack(Monster monster) {
+        int actualDamage = this.getStrikePower();
+        for (Item item : invetory.getItems()){
+            if (item instanceof Weapon){
+                actualDamage += ((Weapon) item).getDamagePoint();
+            }
+        }
+
         if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
-            monster.gotDamage(this.getStrikePower());
+            monster.gotDamage(actualDamage);
         }
     }
 

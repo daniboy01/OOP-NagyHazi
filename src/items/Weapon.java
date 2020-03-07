@@ -11,7 +11,7 @@ public class Weapon extends Item {
 
     public Weapon(int x, int y) {
         super(10,"FrostMourne",x,y);
-        this.damagePoint = 2;
+        this.damagePoint = 5;
     }
 
     @Override
