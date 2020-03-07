@@ -65,14 +65,13 @@ public class GameBoard extends JComponent implements KeyListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.LINE_AXIS));
         GameBoard gameBoard = new GameBoard();
+        InfoPanel info = new InfoPanel(gameBoard);
 
         JPanel boardPanel = new JPanel();
         boardPanel.add(gameBoard);
         JPanel infoPanel = new JPanel();
-        String s = new String("Szörnyek száma: " + gameBoard.monsters.size());
-        infoPanel.setSize(200,600);
-        JLabel field = new JLabel(s);
-        infoPanel.add(field);
+
+        infoPanel.add(info.getInfo());
 
         mainPanel.add(boardPanel);
         mainPanel.add(infoPanel);
@@ -129,5 +128,17 @@ public class GameBoard extends JComponent implements KeyListener {
         }
 
         repaint();
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public ArrayList<Monster> getMonsters() {
+        return monsters;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 }
