@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.jar.JarEntry;
 
 public class GameBoard extends JComponent implements KeyListener {
     int testBoxX;
@@ -60,13 +61,27 @@ public class GameBoard extends JComponent implements KeyListener {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("DIGIT adventure");
-        GameBoard board = new GameBoard();
-        frame.add(board);
+        JFrame frame = new JFrame("Játék");
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.LINE_AXIS));
+        GameBoard gameBoard = new GameBoard();
+
+        JPanel boardPanel = new JPanel();
+        boardPanel.add(gameBoard);
+        JPanel infoPanel = new JPanel();
+        String s = new String("Szörnyek száma: " + gameBoard.monsters.size());
+        infoPanel.setSize(200,600);
+        JLabel field = new JLabel(s);
+        infoPanel.add(field);
+
+        mainPanel.add(boardPanel);
+        mainPanel.add(infoPanel);
+
+        frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.pack();
-        frame.addKeyListener(board);
+        frame.addKeyListener(gameBoard);
     }
 
     @Override
