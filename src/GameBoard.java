@@ -61,26 +61,8 @@ public class GameBoard extends JComponent implements KeyListener {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Játék");
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.LINE_AXIS));
         GameBoard gameBoard = new GameBoard();
-        InfoPanel info = new InfoPanel(gameBoard);
-
-        JPanel boardPanel = new JPanel();
-        boardPanel.add(gameBoard);
-        JPanel infoPanel = new JPanel();
-
-        infoPanel.add(info.getInfo());
-
-        mainPanel.add(boardPanel);
-        mainPanel.add(infoPanel);
-
-        frame.add(mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.pack();
-        frame.addKeyListener(gameBoard);
+        GameWindow gameWindow = new GameWindow(gameBoard);
     }
 
     @Override
@@ -126,7 +108,6 @@ public class GameBoard extends JComponent implements KeyListener {
             }
 
         }
-
         repaint();
     }
 

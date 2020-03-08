@@ -14,7 +14,7 @@ public class InfoPanel {
         String numOfMonsters = "Megmaradt szörnyek száma: " + board.getMonsters().size();
         String numOfItems = "Tárgyak száma a pályán: " + board.getItems().size();
         String hpOfHero = "Életerő: " + board.getHero().getHP();
-        String powerOfHero = "Életerő: " + board.getHero().getStrikePower();
+        String powerOfHero = "Támadóerő: " + board.getHero().getStrikePower();
         JLabel label1 = new JLabel(numOfMonsters);
         JLabel label2 = new JLabel(numOfItems);
         JLabel label3 = new JLabel(hpOfHero);
