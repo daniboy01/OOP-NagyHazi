@@ -1,3 +1,5 @@
+package display;
+
 import characters.Monster;
 import items.Item;
 import items.Weapon;

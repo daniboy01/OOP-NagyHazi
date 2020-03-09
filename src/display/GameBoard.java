@@ -1,7 +1,9 @@
+package display;
+
 import characters.Hero;
 import characters.Monster;
+import commands.ActionController;
 import items.Item;
-import items.Weapon;
 import tiles.Tile;
 
 import javax.swing.*;
@@ -9,7 +11,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 public class GameBoard extends JComponent implements KeyListener {
     int testBoxX;
@@ -23,18 +24,20 @@ public class GameBoard extends JComponent implements KeyListener {
     public static final int COLS = 15;
     private ArrayList<Monster> monsters;
     private ArrayList<Item> items;
+    private ActionController cmp;
 
     public GameBoard() {
         testBoxX = 300;
         testBoxY = 300;
         tiles = new Tile[COLS][ROWS];
-        hero = new Hero(1,1);
+        hero = new Hero(1, 1);
         FileReader reader = new FileReader();
         tiles = reader.getTiles("resources/board.txt");
         monsters = reader.getMonsters();
         items = reader.getItems();
         setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
         setVisible(true);
+        cmp = new ActionController(this);
     }
 
     @Override
@@ -60,10 +63,10 @@ public class GameBoard extends JComponent implements KeyListener {
 
     }
 
-    public static void main(String[] args) {
-        GameBoard gameBoard = new GameBoard();
-        GameWindow gameWindow = new GameWindow(gameBoard);
-    }
+//    public static void main(String[] args) {
+//        GameBoard gameBoard = new GameBoard();
+//        GameWindow gameWindow = new GameWindow(gameBoard);
+//    }
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
@@ -76,37 +79,22 @@ public class GameBoard extends JComponent implements KeyListener {
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (tiles[hero.getPositionX()+1][hero.getPositionY()].canStepOn()) {
-                hero.moveRight();
-            }
+            cmp.moveRight();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (tiles[hero.getPositionX()-1][hero.getPositionY()].canStepOn()) {
-                hero.moveLeft();
-            }
+            cmp.moveLeft();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-            if (tiles[hero.getPositionX()][hero.getPositionY()-1].canStepOn()){
-                hero.moveUp();
-            }
+            cmp.moveUp();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (tiles[hero.getPositionX()][hero.getPositionY()+1].canStepOn()){
-                hero.moveDown();
-            }
+            cmp.moveDown();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
-            for (Monster m : monsters) {
-               hero.attack(m);
-            }
+            cmp.attack();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_F){
-            for (int i = 0; i < items.size(); i++) {
-                if (hero.pickUp(items.get(i))){
-                    items.remove(items.get(i));
-                }
-            }
-
+            cmp.pickUp();
         }
         repaint();
     }

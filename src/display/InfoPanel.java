@@ -1,9 +1,6 @@
-import characters.Hero;
-import characters.Monster;
-import items.Item;
+package display;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class InfoPanel {
     private JPanel info;
