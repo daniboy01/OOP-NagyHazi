@@ -49,6 +49,11 @@ public class Hero extends Character {
         }
     }
 
+    @Override
+    public boolean isAlive() {
+        return this.getHP() > 0;
+    }
+
     public void moveRight(){
         positionX +=1;
         move = "right";
@@ -78,21 +83,15 @@ public class Hero extends Character {
     }
 
     public void attack(Monster monster) {
-        int actualDamage = this.getStrikePower();
-        for (Item item : invetory.getItems()){
-            if (item instanceof Weapon){
-                actualDamage += ((Weapon) item).getDamagePoint();
-            }
-        }
-
         if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
-            monster.gotDamage(actualDamage);
+            monster.gotDamage(this.getStrikePower());
         }
     }
 
     public boolean pickUp(Item weapon) {
         if (this.getPositionX() == weapon.getX() && this.getPositionY() == weapon.getY()){
             this.invetory.addItem(weapon);
+            this.setStrikePower(((Weapon) weapon).getDamagePoint());
             System.out.println("Fegyver felvéve");
             System.out.println(this.invetory.getItems().toString());
             return true;

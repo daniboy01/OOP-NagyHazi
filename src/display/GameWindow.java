@@ -30,4 +30,8 @@ public class GameWindow {
     public void setMainPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
     }
+
+    public void updateInfo(GameBoard gameBoard){
+        this.mainPanel.getInfoPanel().updateLabels(gameBoard);
+    }
 }

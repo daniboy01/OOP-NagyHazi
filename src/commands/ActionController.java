@@ -35,6 +35,9 @@ public class ActionController implements KeyListener {
     public void attack() {
         for (int i = 0; i < gameBoard.getMonsters().size(); i++) {
             gameBoard.getHero().attack(gameBoard.getMonsters().get(i));
+            if (!gameBoard.getMonsters().get(i).isAlive()){
+                gameBoard.getMonsters().remove(gameBoard.getMonsters().get(i));
+            }
         }
     }
 
@@ -71,5 +74,6 @@ public class ActionController implements KeyListener {
             this.pickUp();
         }
         gameBoard.repaint();
+        gameWindow.updateInfo(this.gameBoard);
     }
 }

@@ -25,6 +25,11 @@ public class Monster extends Character {
         }
     }
 
+    @Override
+    public boolean isAlive() {
+        return this.getHP() > 0;
+    }
+
     public int getX() {
         return x;
     }

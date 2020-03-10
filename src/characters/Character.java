@@ -23,4 +23,6 @@ public abstract class Character {
     public void setStrikePower(int strikePower) {
         this.strikePower = strikePower;
     }
+
+    public abstract boolean isAlive();
 }

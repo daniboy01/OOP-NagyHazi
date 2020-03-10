@@ -71,4 +71,12 @@ public class GameBoard extends JComponent  {
     public ArrayList<Item> getItems() {
         return items;
     }
+
+    public void updateLists(){
+        for (int i = 0; i < monsters.size(); i++) {
+            if (monsters.get(i).getHP() == 0){
+                monsters.remove(monsters.get(i));
+            }
+        }
+    }
 }
