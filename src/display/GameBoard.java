@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class GameBoard extends JComponent implements KeyListener {
+public class GameBoard extends JComponent  {
     int testBoxX;
     int testBoxY;
     private Tile[][] tiles;
@@ -24,7 +24,6 @@ public class GameBoard extends JComponent implements KeyListener {
     public static final int COLS = 15;
     private ArrayList<Monster> monsters;
     private ArrayList<Item> items;
-    private ActionController cmp;
 
     public GameBoard() {
         testBoxX = 300;
@@ -37,7 +36,6 @@ public class GameBoard extends JComponent implements KeyListener {
         items = reader.getItems();
         setPreferredSize(new Dimension(Tile.SIZE * COLS, Tile.SIZE * ROWS));
         setVisible(true);
-        cmp = new ActionController(this);
     }
 
     @Override
@@ -60,43 +58,6 @@ public class GameBoard extends JComponent implements KeyListener {
             }
         }
         hero.paint(graphics);
-
-    }
-
-//    public static void main(String[] args) {
-//        GameBoard gameBoard = new GameBoard();
-//        GameWindow gameWindow = new GameWindow(gameBoard);
-//    }
-
-    @Override
-    public void keyTyped(KeyEvent keyEvent) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent keyEvent) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            cmp.moveRight();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            cmp.moveLeft();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-            cmp.moveUp();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-            cmp.moveDown();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
-            cmp.attack();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_F){
-            cmp.pickUp();
-        }
-        repaint();
     }
 
     public Hero getHero() {
