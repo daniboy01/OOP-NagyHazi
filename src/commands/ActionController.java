@@ -9,6 +9,7 @@ public class ActionController implements KeyListener {
     private GameBoard gameBoard;
     private GameWindow gameWindow;
 
+
     public ActionController(GameBoard gameBoard,GameWindow gameWindow) {
         this.gameBoard = gameBoard;
         this.gameWindow = gameWindow;
@@ -35,6 +36,7 @@ public class ActionController implements KeyListener {
     public void attack() {
         for (int i = 0; i < gameBoard.getMonsters().size(); i++) {
             gameBoard.getHero().attack(gameBoard.getMonsters().get(i));
+            gameBoard.getMonsters().get(i).attack(gameBoard.getHero());
             if (!gameBoard.getMonsters().get(i).isAlive()){
                 gameBoard.getMonsters().remove(gameBoard.getMonsters().get(i));
             }

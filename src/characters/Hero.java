@@ -82,10 +82,16 @@ public class Hero extends Character {
         return positionY;
     }
 
-    public void attack(Monster monster) {
+    public boolean attack(Monster monster) {
         if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
-            monster.gotDamage(this.getStrikePower());
+            monster.gotDamage(this);
+            return true;
         }
+        return false;
+    }
+
+    public void gotDamage(Monster monster){
+        this.setHP(this.getHP()-monster.getStrikePower());
     }
 
     public boolean pickUp(Item weapon) {

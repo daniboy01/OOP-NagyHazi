@@ -46,11 +46,14 @@ public class Monster extends Character {
         this.y = y;
     }
 
-    public void gotDamage(int damage) {
-        this.setHP(this.getHP() - damage);
+    public void gotDamage(Hero hero) {
+        this.setHP(this.getHP() - hero.getStrikePower());
     }
 
     public void attack(Hero hero){
-
+        if (this.getX() == hero.getPositionX() && this.getY() == hero.getPositionY()){
+            hero.gotDamage(this);
+        }
     }
+
 }
