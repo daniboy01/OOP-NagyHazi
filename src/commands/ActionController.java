@@ -9,7 +9,6 @@ public class ActionController implements KeyListener {
     private GameBoard gameBoard;
     private GameWindow gameWindow;
 
-
     public ActionController(GameBoard gameBoard,GameWindow gameWindow) {
         this.gameBoard = gameBoard;
         this.gameWindow = gameWindow;
