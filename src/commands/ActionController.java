@@ -1,50 +1,74 @@
 package commands;
+import characters.Hero;
+import characters.Monster;
 import display.GameBoard;
 import display.GameWindow;
+import items.Item;
+import tiles.Tile;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class ActionController implements KeyListener {
     private GameBoard gameBoard;
     private GameWindow gameWindow;
+    private Hero hero;
+    private Tile[][] tiles;
+    private ArrayList<Monster> monsters;
+    private ArrayList<Item> items;
+
 
     public ActionController(GameBoard gameBoard,GameWindow gameWindow) {
         this.gameBoard = gameBoard;
         this.gameWindow = gameWindow;
         this.gameWindow.getFrame().addKeyListener(this);
+        this.hero = gameBoard.getHero();
+        this.tiles = gameBoard.getTiles();
+        this.monsters = gameBoard.getMonsters();
+        this.items = gameBoard.getItems();
     }
 
     public void moveUp() {
-        if (gameBoard.getTiles()[gameBoard.getHero().getPositionX()][gameBoard.getHero().getPositionY()-1].canStepOn()) {gameBoard.getHero().moveUp();}
+        if (tiles[hero.getX()][hero.getY()-1].canStepOn()) {
+            hero.moveUp();
+        }
     }
 
     public void moveDown() {
-        if (gameBoard.getTiles()[gameBoard.getHero().getPositionX()][gameBoard.getHero().getPositionY()+1].canStepOn()) {gameBoard.getHero().moveDown();}
+        if (tiles[hero.getX()][hero.getY()+1].canStepOn()) {
+            hero.moveDown();
+        }
 
     }
 
     public void moveLeft() {
-        if (gameBoard.getTiles()[gameBoard.getHero().getPositionX()-1][gameBoard.getHero().getPositionY()].canStepOn()) {gameBoard.getHero().moveLeft();}
+        if (tiles[hero.getX()-1][hero.getY()].canStepOn()) {
+            hero.moveLeft();
+        }
     }
 
     public void moveRight() {
-        if (gameBoard.getTiles()[gameBoard.getHero().getPositionX()+1][gameBoard.getHero().getPositionY()].canStepOn()) {gameBoard.getHero().moveRight();}
+        if (tiles[hero.getX()+1][hero.getY()].canStepOn()) {
+            hero.moveRight();
+        }
     }
 
     public void attack() {
-        for (int i = 0; i < gameBoard.getMonsters().size(); i++) {
-            gameBoard.getHero().attack(gameBoard.getMonsters().get(i));
-            gameBoard.getMonsters().get(i).attack(gameBoard.getHero());
-            if (!gameBoard.getMonsters().get(i).isAlive()){
-                gameBoard.getMonsters().remove(gameBoard.getMonsters().get(i));
+        for (int i = 0; i < monsters.size(); i++) {
+            hero.attack(monsters.get(i));
+            monsters.get(i).attack(hero);
+            if (!monsters.get(i).isAlive()){
+                monsters.remove(monsters.get(i));
             }
         }
     }
 
     public void pickUp() {
-        for (int i = 0; i < gameBoard.getItems().size(); i++) {
-            if (gameBoard.getHero().pickUp(gameBoard.getItems().get(i))) { gameBoard.getItems().remove(gameBoard.getItems().get(i));}
+        for (int i = 0; i < items.size(); i++) {
+            if (hero.pickUp(items.get(i))) {
+                items.remove(items.get(i));
+            }
         }
     }
 

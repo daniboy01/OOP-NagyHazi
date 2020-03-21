@@ -74,16 +74,16 @@ public class Hero extends Character {
         move = "up";
     }
 
-    public int getPositionX() {
+    public int getX() {
         return positionX;
     }
 
-    public int getPositionY() {
+    public int getY() {
         return positionY;
     }
 
     public boolean attack(Monster monster) {
-        if (this.getPositionX() == monster.getX() && this.getPositionY() == monster.getY()) {
+        if (this.getX() == monster.getX() && this.getY() == monster.getY()) {
             monster.gotDamage(this);
             return true;
         }
@@ -95,7 +95,7 @@ public class Hero extends Character {
     }
 
     public boolean pickUp(Item weapon) {
-        if (this.getPositionX() == weapon.getX() && this.getPositionY() == weapon.getY()){
+        if (this.getX() == weapon.getX() && this.getY() == weapon.getY()){
             this.invetory.addItem(weapon);
             this.setStrikePower(((Weapon) weapon).getDamagePoint());
             System.out.println("Fegyver felvéve");

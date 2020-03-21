@@ -51,7 +51,7 @@ public class Monster extends Character {
     }
 
     public void attack(Hero hero){
-        if (this.getX() == hero.getPositionX() && this.getY() == hero.getPositionY()){
+        if (this.getX() == hero.getX() && this.getY() == hero.getY()){
             hero.gotDamage(this);
         }
     }
