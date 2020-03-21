@@ -6,6 +6,7 @@ import display.GameWindow;
 import items.Item;
 import tiles.Tile;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -101,8 +102,12 @@ public class ActionController implements KeyListener {
                     this.pickUp();
                     break;
             }
+            gameBoard.repaint();
+            gameWindow.updateInfo(this.gameBoard);
+            if (!hero.isAlive()){
+                JOptionPane.showMessageDialog(gameWindow.getFrame(),"A játékos meghalt");
+                hero = null;
+            }
         } catch (Exception e) {}
-        gameBoard.repaint();
-        gameWindow.updateInfo(this.gameBoard);
     }
 }
