@@ -1,5 +1,8 @@
 package tiles;
+
+
 import java.awt.*;
+
 
 public class Path extends Tile  {
 
@@ -21,3 +24,4 @@ public class Path extends Tile  {
     }
 
 }
+

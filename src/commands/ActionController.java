@@ -80,24 +80,28 @@ public class ActionController implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.moveRight();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.moveLeft();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-            this.moveUp();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.moveDown();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
-            this.attack();
-        }
-        if (keyEvent.getKeyCode() == KeyEvent.VK_F){
-            this.pickUp();
-        }
+        try {
+            switch (keyEvent.getKeyCode()) {
+                case KeyEvent.VK_RIGHT:
+                    this.moveRight();
+                    break;
+                case KeyEvent.VK_LEFT:
+                    this.moveLeft();
+                    break;
+                case KeyEvent.VK_UP:
+                    this.moveUp();
+                    break;
+                case KeyEvent.VK_DOWN:
+                    this.moveDown();
+                    break;
+                case KeyEvent.VK_SPACE:
+                    this.attack();
+                    break;
+                case KeyEvent.VK_F:
+                    this.pickUp();
+                    break;
+            }
+        } catch (Exception e) {}
         gameBoard.repaint();
         gameWindow.updateInfo(this.gameBoard);
     }
