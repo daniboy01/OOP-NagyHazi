@@ -14,7 +14,6 @@ public class PositionedImage {
         this.posX = posX;
         this.posY = posY;
         try {
-            //Cica
             image = ImageIO.read(new File(filename));
         } catch (IOException e) {
             e.printStackTrace();
