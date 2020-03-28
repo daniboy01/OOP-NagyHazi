@@ -50,10 +50,12 @@ public class Monster extends Character {
         this.setHP(this.getHP() - hero.getStrikePower());
     }
 
-    public void attack(Hero hero){
+    public boolean attack(Hero hero){
         if (this.getX() == hero.getX() && this.getY() == hero.getY()){
             hero.gotDamage(this);
+            return true;
         }
+        return false;
     }
 
 }

@@ -104,4 +104,8 @@ public class Hero extends Character {
         }
         return false;
     }
+
+    public String getMove() {
+        return move;
+    }
 }
