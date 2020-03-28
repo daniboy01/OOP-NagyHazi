@@ -55,22 +55,26 @@ public class ActionController implements KeyListener {
         }
     }
 
-    public void attack() {
+    public boolean attack() {
         for (int i = 0; i < monsters.size(); i++) {
             hero.attack(monsters.get(i));
             monsters.get(i).attack(hero);
             if (!monsters.get(i).isAlive()){
                 monsters.remove(monsters.get(i));
             }
+            return true;
         }
+        return false;
     }
 
-    public void pickUp() {
+    public boolean pickUp() {
         for (int i = 0; i < items.size(); i++) {
             if (hero.pickUp(items.get(i))) {
                 items.remove(items.get(i));
+                return true;
             }
         }
+        return false;
     }
 
     @Override

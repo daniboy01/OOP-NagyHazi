@@ -1,5 +1,7 @@
 import characters.Hero;
 import characters.Monster;
+import items.Item;
+import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -7,11 +9,13 @@ import static org.junit.Assert.assertEquals;
 public class HeroTest {
     Hero hero;
     Monster monster;
+    Item item;
 
     @Before
     public void setUp(){
         hero = new Hero(1,1);
         monster = new Monster(1,1);
+        item = new Weapon(1,1);
     }
 
     @Test
@@ -52,5 +56,10 @@ public class HeroTest {
     @Test
     public void attackTest(){
         assertEquals(true,this.hero.attack(this.monster));
+    }
+
+    @Test
+    public void pickUpTest(){
+        assertEquals(true,this.hero.pickUp(this.item));
     }
 }

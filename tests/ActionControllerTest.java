@@ -5,9 +5,7 @@ import display.GameBoard;
 import display.GameWindow;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -57,4 +55,15 @@ public class ActionControllerTest {
         controller.moveLeft();
         assertEquals("left",this.hero.getMove());
     }
+
+    @Test
+    public void attackTest(){
+        assertEquals(true,this.controller.attack());
+    }
+
+    @Test
+    public void pickUpTest(){
+        assertEquals(false,this.controller.pickUp());
+    }
+
 }
