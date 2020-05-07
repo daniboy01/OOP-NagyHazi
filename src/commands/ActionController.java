@@ -61,8 +61,9 @@ public class ActionController implements KeyListener {
             monsters.get(i).attack(hero);
             if (!monsters.get(i).isAlive()){
                 monsters.remove(monsters.get(i));
+                return true;
             }
-            return true;
+
         }
         return false;
     }

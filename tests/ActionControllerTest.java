@@ -58,7 +58,7 @@ public class ActionControllerTest {
 
     @Test
     public void attackTest(){
-        assertEquals(true,this.controller.attack());
+        assertEquals(false,this.controller.attack());
     }
 
     @Test
