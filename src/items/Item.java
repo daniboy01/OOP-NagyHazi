@@ -15,7 +15,7 @@ public abstract class Item {
         this.y = y;
     }
 
-    public abstract void action();
+
     public abstract void paint(Graphics graphics);
 
     public int getHP() {

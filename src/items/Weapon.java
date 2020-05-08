@@ -14,10 +14,6 @@ public class Weapon extends Item {
         this.damagePoint = 5;
     }
 
-    @Override
-    public void action() {
-
-    }
 
     @Override
     public void paint(Graphics graphics) {

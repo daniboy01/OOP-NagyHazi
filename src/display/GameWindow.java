@@ -7,7 +7,7 @@ public class GameWindow {
     private MainPanel mainPanel;
 
     public GameWindow(GameBoard gameBoard) {
-        this.frame = new JFrame("Fasza játékr xD");
+        this.frame = new JFrame("Kalandjáték");
         this.mainPanel = new MainPanel(new BoardPanel(gameBoard),new InfoPanel(gameBoard));
         frame.add(mainPanel.getMainPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

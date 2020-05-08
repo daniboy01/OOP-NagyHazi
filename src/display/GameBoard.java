@@ -13,8 +13,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class GameBoard extends JComponent  {
-    int testBoxX;
-    int testBoxY;
     private Tile[][] tiles;
     private Hero hero;
     public Tile[][] getTiles() {
@@ -26,8 +24,6 @@ public class GameBoard extends JComponent  {
     private ArrayList<Item> items;
 
     public GameBoard() {
-        testBoxX = 300;
-        testBoxY = 300;
         tiles = new Tile[COLS][ROWS];
         hero = new Hero(1, 1);
         FileReader reader = new FileReader();
