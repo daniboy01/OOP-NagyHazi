@@ -109,8 +109,8 @@ public class ActionController implements KeyListener {
             }
             gameBoard.repaint();
             gameWindow.updateInfo(this.gameBoard);
-            if (!hero.isAlive()){
-                JOptionPane.showMessageDialog(gameWindow.getFrame(),"A játékos meghalt");
+            if (!hero.isAlive() || gameBoard.getMonsters().size() == 0){
+                JOptionPane.showMessageDialog(gameWindow.getFrame(),"A játéknak vége");
                 hero = null;
             }
         } catch (Exception e) {}

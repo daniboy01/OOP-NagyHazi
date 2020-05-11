@@ -19,18 +19,6 @@ public class GameWindow {
         return frame;
     }
 
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
-    public MainPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public void setMainPanel(MainPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
-
     public void updateInfo(GameBoard gameBoard){
         this.mainPanel.getInfoPanel().updateLabels(gameBoard);
     }

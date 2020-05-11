@@ -34,9 +34,8 @@ public class GameBoard extends JComponent  {
         setVisible(true);
     }
 
-    @Override
+
     public void paint(Graphics graphics) {
-        super.paint(graphics);
         for (int i = 0; i < COLS; i++) {
             for (int j = 0; j < ROWS; j++) {
                 tiles[i][j].paint(graphics);
@@ -68,11 +67,5 @@ public class GameBoard extends JComponent  {
         return items;
     }
 
-    public void updateLists(){
-        for (int i = 0; i < monsters.size(); i++) {
-            if (monsters.get(i).getHP() == 0){
-                monsters.remove(monsters.get(i));
-            }
-        }
-    }
+
 }

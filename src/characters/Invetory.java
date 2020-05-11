@@ -23,8 +23,4 @@ public class Invetory {
     public ArrayList<Item> getItems() {
         return items;
     }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
 }

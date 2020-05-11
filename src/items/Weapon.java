@@ -25,9 +25,6 @@ public class Weapon extends Item {
         return damagePoint;
     }
 
-    public void setDamagePoint(int damagePoint) {
-        this.damagePoint = damagePoint;
-    }
 
     @Override
     public String toString() {
